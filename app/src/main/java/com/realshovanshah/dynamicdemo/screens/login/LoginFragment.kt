@@ -1,7 +1,6 @@
 package com.realshovanshah.dynamicdemo.screens
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -11,14 +10,11 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
+import com.realshovanshah.dynamicdemo.LoginViewModelFactory
 import com.realshovanshah.dynamicdemo.R
 import com.realshovanshah.dynamicdemo.databinding.FragmentLoginBinding
-import com.realshovanshah.dynamicdemo.model.BookDetail
-import com.realshovanshah.dynamicdemo.network.BookService
-import com.realshovanshah.dynamicdemo.utils.Constants
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
+import com.realshovanshah.dynamicdemo.network.LoginService
+import com.realshovanshah.dynamicdemo.repository.TeacherRepository
 
 class LoginFragment : Fragment() {
 
@@ -34,7 +30,12 @@ class LoginFragment : Fragment() {
     ): View? {
 
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_login, container,false)
-        viewModel = ViewModelProvider(this).get(LoginViewModel::class.java)
+
+        val service = LoginService.create()
+        val repository= TeacherRepository(service)
+        val factory= LoginViewModelFactory(repository, requireActivity().application)
+
+        viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
         binding.loginViewModel = viewModel
         binding.lifecycleOwner= this

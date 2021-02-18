@@ -14,7 +14,9 @@ import kotlinx.android.synthetic.main.activity_main.*
 
 
 class MainActivity : AppCompatActivity() {
+
     lateinit var drawerLayout: DrawerLayout
+
 //    lateinit var viewPager: ViewPager
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,6 +25,9 @@ class MainActivity : AppCompatActivity() {
         val binding: ActivityMainBinding = DataBindingUtil.setContentView(this, R.layout.activity_main)
         val navController = this.findNavController(R.id.navHostFragment)
         NavigationUI.setupWithNavController(binding.drawerNavView, navController)
+
+
+//        NavigationUI.setupWithNavController()
 
 
 //        binding.bottomNavView.setOnNavigationItemSelectedListener {
