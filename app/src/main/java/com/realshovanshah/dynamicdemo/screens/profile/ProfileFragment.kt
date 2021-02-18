@@ -1,4 +1,4 @@
-package com.realshovanshah.dynamicdemo.screens
+package com.realshovanshah.dynamicdemo.screens.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,12 +7,13 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
-import com.realshovanshah.dynamicdemo.LoginViewModelFactory
-//import com.realshovanshah.dynamicdemo.ProfileViewModelFactory
+import com.realshovanshah.dynamicdemo.screens.login.LoginViewModelFactory
+//import com.realshovanshah.dynamicdemo.screens.profile.ProfileViewModelFactory
 import com.realshovanshah.dynamicdemo.R
 import com.realshovanshah.dynamicdemo.databinding.FragmentProfileBinding
 import com.realshovanshah.dynamicdemo.network.LoginService
 import com.realshovanshah.dynamicdemo.repository.TeacherRepository
+import com.realshovanshah.dynamicdemo.screens.profile.ProfileViewModel
 
 class ProfileFragment : Fragment() {
 
@@ -29,7 +30,11 @@ class ProfileFragment : Fragment() {
 
         val service = LoginService.create()
         val repository= TeacherRepository(service)
-        val factory= LoginViewModelFactory(repository, requireActivity().application)
+        val factory=
+            ProfileViewModelFactory(
+                repository,
+                requireActivity().application
+            )
 
         viewModel = ViewModelProvider(this, factory).get(ProfileViewModel::class.java)
         binding.profileViewModel = viewModel

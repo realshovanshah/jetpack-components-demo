@@ -2,7 +2,7 @@ package com.realshovanshah.dynamicdemo.model
 
 import com.google.gson.annotations.SerializedName
 
-class TeacherDetail {
+class TeacherDetail() {
     @SerializedName("Name")
     lateinit var name: String
 

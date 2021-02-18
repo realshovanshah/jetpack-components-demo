@@ -1,7 +1,8 @@
-package com.realshovanshah.dynamicdemo.screens
+package com.realshovanshah.dynamicdemo.screens.profile
 
 import android.app.Application
 import android.util.Log
+import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.realshovanshah.dynamicdemo.model.TeacherDetail
@@ -10,7 +11,9 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main
 import kotlinx.coroutines.launch
 
-class ProfileViewModel(var teacherRepository: TeacherRepository) : ViewModel(){
+class ProfileViewModel(var teacherRepository: TeacherRepository, application: Application) : AndroidViewModel(
+    application
+){
 
     private val TAG = "ProfileViewModel"
 
@@ -33,7 +36,7 @@ class ProfileViewModel(var teacherRepository: TeacherRepository) : ViewModel(){
         Log.d(TAG, "onLogin: called")
 //        val user = liveData { emit(userRepository.login() ) }
 
-            val user = teacherRepository.getTeacher(Application())
+            val user = teacherRepository.getTeacher(getApplication())
             teacher.value = user
 
 

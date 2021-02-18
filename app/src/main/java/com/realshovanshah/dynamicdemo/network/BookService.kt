@@ -13,9 +13,9 @@ import retrofit2.http.Query
 interface BookService {
 
         @POST("teacher/getELibraryType?passKey=5C497DBD-27E3-4746-8F65-9EA1CDB1933F&EmployeeId=18")
-        fun getBooks(@Query("passKey") passkey: String,
+        suspend fun getBooks(@Query("passKey") passkey: String,
                      @Query("employeeId") employeeId: String):
-                Call<List<BookDetail>>
+                List<BookDetail>
 
         companion object {
             fun create(): BookService {

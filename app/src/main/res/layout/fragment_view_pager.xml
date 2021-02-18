@@ -8,22 +8,31 @@
         android:layout_height="match_parent"
         tools:context=".ViewPagerFragment">
 
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="parent"
+            />
+
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            app:layout_constraintBottom_toTopOf="@id/bottomNavView" />
+            app:layout_constraintBottom_toTopOf="@+id/tabLayout"
+            app:layout_constraintTop_toTopOf="parent" />
+        <!--            app:layout_constraintBottom_toTopOf="@id/bottomNavView" />-->
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomNavView"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+        <!--        <com.google.android.material.bottomnavigation.BottomNavigationView-->
+        <!--            android:id="@+id/bottomNavView"-->
+        <!--            android:layout_width="match_parent"-->
+        <!--            android:layout_height="wrap_content"-->
 
-            android:layout_gravity="bottom"
-            android:background="@color/colorAccent"
-            android:padding="10dp"
-            app:layout_constraintBottom_toBottomOf="@+id/viewPager"
-            app:menu="@menu/nav_menu" />
+        <!--            android:layout_gravity="bottom"-->
+        <!--            android:background="@color/colorAccent"-->
+        <!--            android:padding="10dp"-->
+        <!--            app:layout_constraintBottom_toBottomOf="@+id/viewPager"-->
+        <!--            app:menu="@menu/nav_menu" />-->
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

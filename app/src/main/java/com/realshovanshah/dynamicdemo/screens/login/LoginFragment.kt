@@ -1,5 +1,6 @@
-package com.realshovanshah.dynamicdemo.screens
+package com.realshovanshah.dynamicdemo.screens.login
 
+import android.app.Application
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,13 +9,14 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.NavHostFragment
-import com.realshovanshah.dynamicdemo.LoginViewModelFactory
 import com.realshovanshah.dynamicdemo.R
 import com.realshovanshah.dynamicdemo.databinding.FragmentLoginBinding
 import com.realshovanshah.dynamicdemo.network.LoginService
 import com.realshovanshah.dynamicdemo.repository.TeacherRepository
+//import com.realshovanshah.dynamicdemo.screens.LoginFragmentDirections
 
 class LoginFragment : Fragment() {
 
@@ -33,7 +35,11 @@ class LoginFragment : Fragment() {
 
         val service = LoginService.create()
         val repository= TeacherRepository(service)
-        val factory= LoginViewModelFactory(repository, requireActivity().application)
+        val factory=
+            LoginViewModelFactory(
+                repository,
+                requireActivity().application
+            )
 
         viewModel = ViewModelProvider(this, factory).get(LoginViewModel::class.java)
 
@@ -50,9 +56,11 @@ class LoginFragment : Fragment() {
     }
 
     private fun onLoginComplete(){
-        val action= LoginFragmentDirections.actionLoginFragmentToViewPagerFragment()
+        val action=
+            LoginFragmentDirections.actionLoginFragmentToViewPagerFragment()
         NavHostFragment.findNavController(this).navigate(action)
         Toast.makeText(context,"User Key: $",Toast.LENGTH_LONG ).show()
     }
 
 }
+

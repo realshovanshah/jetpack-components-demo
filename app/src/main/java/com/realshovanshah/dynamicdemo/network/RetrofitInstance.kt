@@ -26,4 +26,5 @@ object RetrofitInstance {
 
         return retrofit
     }
+
 }

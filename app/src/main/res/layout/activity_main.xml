@@ -21,9 +21,6 @@
         app:navGraph="@navigation/navigation"
         android:id="@+id/navHostFragment"/>
 
-
-
-
     </RelativeLayout>
 
     <com.google.android.material.navigation.NavigationView

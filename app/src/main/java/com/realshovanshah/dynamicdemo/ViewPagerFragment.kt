@@ -6,12 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.android.material.tabs.TabLayoutMediator
 import com.realshovanshah.dynamicdemo.adapter.ViewPagerAdapter
 import com.realshovanshah.dynamicdemo.databinding.FragmentViewPagerBinding
 import com.realshovanshah.dynamicdemo.screens.BookFragment
 import com.realshovanshah.dynamicdemo.screens.HomeFragment
-import kotlinx.android.synthetic.main.fragment_view_pager.view.*
 
 class ViewPagerFragment: Fragment() {
 
@@ -37,6 +36,14 @@ class ViewPagerFragment: Fragment() {
         )
 
         binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            val titles = arrayListOf<String>(
+                "Home",
+                "Books"
+            )
+            tab.text = titles[position]
+        }.attach()
 
 //        binding.bottomNavView.setOnNavigationItemSelectedListener {
 //            when (it.itemId) {

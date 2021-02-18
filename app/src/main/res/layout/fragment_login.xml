@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".screens.LoginFragment"
+    tools:context=".screens.login.LoginFragment"
     >
 
 <data>
     <variable
         name="loginViewModel"
-        type="com.realshovanshah.dynamicdemo.screens.LoginViewModel" />
+        type="com.realshovanshah.dynamicdemo.screens.login.LoginViewModel" />
 </data>
 
 <LinearLayout

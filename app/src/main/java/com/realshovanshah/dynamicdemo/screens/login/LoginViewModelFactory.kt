@@ -1,10 +1,9 @@
-package com.realshovanshah.dynamicdemo
+package com.realshovanshah.dynamicdemo.screens.login
 
 import android.app.Application
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import com.realshovanshah.dynamicdemo.repository.TeacherRepository
-import com.realshovanshah.dynamicdemo.screens.LoginViewModel
 
 //interface LoginFactory<T> {
 //    fun create(): T
@@ -17,7 +16,10 @@ class LoginViewModelFactory(
 ) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel?> create(modelClass: Class<T>): T {
-        return LoginViewModel(teacherRepository, application) as T
+        return LoginViewModel(
+            teacherRepository,
+            application
+        ) as T
 
     }
 

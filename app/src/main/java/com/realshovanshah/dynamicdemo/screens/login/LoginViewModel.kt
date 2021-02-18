@@ -1,10 +1,9 @@
-package com.realshovanshah.dynamicdemo.screens
+package com.realshovanshah.dynamicdemo.screens.login
 
 import android.app.Application
 import android.util.Log
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
 import com.realshovanshah.dynamicdemo.repository.TeacherRepository
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers.Main

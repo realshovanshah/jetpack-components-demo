@@ -14,10 +14,10 @@ import retrofit2.http.Query
 interface LoginService {
 
     @GET("teacher/isValidUser")
-    fun getTeacher(@Query("username") username: String,
+    suspend fun getTeacher(@Query("username") username: String,
                     @Query("pwd") password: String,
                     @Query("passkey") passkey: String):
-                Call<List<TeacherDetail>>
+                List<TeacherDetail>
 
     companion object {
         fun create(): LoginService {
