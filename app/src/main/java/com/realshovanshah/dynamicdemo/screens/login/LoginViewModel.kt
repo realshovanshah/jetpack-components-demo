@@ -39,7 +39,6 @@ class LoginViewModel(var teacherRepository: TeacherRepository, application: Appl
                 teacherRepository.saveTeacher(user[0], getApplication())
                 _loggedIn.value = true
             }
-
         }
 
     }

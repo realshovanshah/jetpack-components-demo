@@ -1,7 +1,10 @@
 package com.realshovanshah.dynamicdemo.repository
 
 import android.util.Log
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 import com.realshovanshah.dynamicdemo.model.BookDetail
+import com.realshovanshah.dynamicdemo.model.TeacherDetail
 import com.realshovanshah.dynamicdemo.network.BookService
 import com.realshovanshah.dynamicdemo.network.RetrofitInstance
 import com.realshovanshah.dynamicdemo.utils.Constants
@@ -15,18 +18,18 @@ import retrofit2.Response
 class BookRepository(private var bookService: BookService) {
 
     private val TAG = "BookRepository"
-    private val bookList = ArrayList<BookDetail>()
+    private var bookList = ArrayList<BookDetail>()
 
-    fun getBooks(){
+    suspend fun getBooks(): ArrayList<BookDetail>{
        bookService = RetrofitInstance.get().create(BookService::class.java)
-        CoroutineScope(Dispatchers.IO).launch {
 //            repository.login()
-            val teacher = bookService.getBooks(Constants.PASS_KEY, Constants.EMP_ID)
+            bookList = bookService.getBooks(Constants.PASS_KEY, Constants.EMP_ID) as ArrayList<BookDetail>
+//            bookList = teacher as ArrayList<BookDetail>
 
-            Log.d(TAG, "onLogin: $teacher")
-
-        }
+            Log.d(TAG, "getBooks: complete")
+        return bookList
     }
+
 
 //    suspend fun getBooks(){
 //        bookService.getBooks(Constants.PASS_KEY, Constants.EMP_ID).enqueue(object :

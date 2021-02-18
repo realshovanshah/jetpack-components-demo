@@ -1,5 +1,6 @@
 package com.realshovanshah.dynamicdemo
 
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -9,7 +10,7 @@ import androidx.fragment.app.Fragment
 import com.google.android.material.tabs.TabLayoutMediator
 import com.realshovanshah.dynamicdemo.adapter.ViewPagerAdapter
 import com.realshovanshah.dynamicdemo.databinding.FragmentViewPagerBinding
-import com.realshovanshah.dynamicdemo.screens.BookFragment
+import com.realshovanshah.dynamicdemo.screens.book.BookFragment
 import com.realshovanshah.dynamicdemo.screens.HomeFragment
 
 class ViewPagerFragment: Fragment() {
@@ -25,8 +26,8 @@ class ViewPagerFragment: Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_view_pager, container,false)
 
         val fragments = arrayListOf(
-            BookFragment(),
-            HomeFragment()
+            HomeFragment(),
+            BookFragment()
         )
 
         val adapter = ViewPagerAdapter(
@@ -42,6 +43,7 @@ class ViewPagerFragment: Fragment() {
                 "Home",
                 "Books"
             )
+            binding.tabLayout.setBackgroundColor(Color.parseColor("#6200EE"))
             tab.text = titles[position]
         }.attach()
 
